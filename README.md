@@ -31,7 +31,7 @@ Antes de começar, certifique-se de ter o Node.js instalado em sua máquina. Voc
 Para iniciar o servidor, execute o seguinte comando:
 
 ```sh
-node index.js
+npm run dev
 ```
 
 ## Funcionamento
