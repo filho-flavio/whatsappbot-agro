@@ -11,7 +11,7 @@ Antes de começar, certifique-se de ter o Node.js instalado em sua máquina. Voc
 1. Clone o repositório:
 
    ```sh
-   git clone https://github.com/filho-flavio/whatsapp-bot.git
+   git clone https://github.com/filho-flavio/whatsappbot-agro
    ```
 
 2. Navegue até o diretório do projeto:
