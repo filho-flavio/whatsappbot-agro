@@ -25,6 +25,7 @@ export const stageOne = {
         // alterando para o terceiro stage
         storage[params.from].stage = STAGES.TERCEIRO_CONTATO;
         storage[params.from].convenio = true;
+        
         msg = `Digite somente o número da opção desejada:
                 1. FORMALIZAÇÃO
                 2. EXECUÇÃO
@@ -32,7 +33,7 @@ export const stageOne = {
                 4. ASSINATURA DO TERMO - CADASTRO EXTERNO
                 5. RESCISÃO DO INSTRUMENTO
                 \n
-                Assim que possível responderemos sua solicitação.`;
+              Assim que possível responderemos sua solicitação.`;
       } else {
         storage[params.from].stage = STAGES.PRIMEIRO_CONTATO;
 

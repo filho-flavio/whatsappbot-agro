@@ -1,4 +1,4 @@
-import { initialStage, stageOne } from "./stages/index.js";
+import { initialStage, stageOne, stageTwo } from "./stages/index.js";
 
 import { storage } from "./storage.js";
 
@@ -11,12 +11,12 @@ export const stages = [
     descricao: "Validar convênio",
     stage: stageOne,
   },
+  {
+    descricao: "Lidar com as 5 opções",
+    stage: stageTwo,
+  },
   // {
-  //   descricao: "Enviar opções",
-  //   stage: stageTwo,
-  // },
-  // {
-  //   descricao: "Bill",
+  //   descricao: "Responder uma das 5 opções",
   //   stage: stageThree,
   // },
   // {
@@ -40,6 +40,8 @@ export function getStage({ from }) {
   storage[from] = {
     stage: 0, // Estágio inicial definido como 0.
     convenio: false,
+    first_option: null,
+    second_option: null
   };
 
   // Retorna o valor do campo 'stage' da nova entrada criada.
