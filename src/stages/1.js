@@ -1,74 +1,56 @@
-import { VenomBot } from '../venom.js'
-import { menu } from '../menu.js'
-import { storage } from '../storage.js'
-import { neighborhoods } from './neighborhoods.js'
-import { initialStage } from './0.js'
-import { STAGES } from './index.js'
+import { VenomBot } from "../venom.js";
+import { storage } from "../storage.js";
+import { STAGES } from "./index.js";
+
+// ************************************
+// Esse é o stage de validar o convênio
+// ************************************
 
 export const stageOne = {
   async exec(params) {
-    const message = params.message.trim()
-    const isMsgValid = /[0|1|2]/.test(message)
+    // validando a mensagem do from
+    const message = params.message.trim();
+    const isMsgValid = /^[0-9]+$/.test(message);
 
-    let msg =
-      '❌ *Digite uma opção válida, por favor.* \n⚠️ ```APENAS UMA OPÇÃO POR VEZ``` ⚠️'
+    console.log("Aqui está a mensagem: ", message);
+    console.log("Aqui está se a mensagem é valida: ", isMsgValid);
 
+    let msg = "Digite apenas os números do convênio.";
+
+    // se mensagem for valida
     if (isMsgValid) {
-      const option = options[Number(message)]()
-      msg = option.message
-      storage[params.from].stage = option.nextStage || STAGES.INICIAL
-    }
+      const convenioValidado = validarConvenio(message);
 
-    await VenomBot.getInstance().sendText({ to: params.from, message: msg })
+      if (convenioValidado) {
+        // alterando para o terceiro stage
+        storage[params.from].stage = STAGES.TERCEIRO_CONTATO;
+        storage[params.from].convenio = true;
+        msg = `Digite somente o número da opção desejada:
+                1. FORMALIZAÇÃO
+                2. EXECUÇÃO
+                3. PRESTAÇÃO DE CONTAS
+                4. ASSINATURA DO TERMO - CADASTRO EXTERNO
+                5. RESCISÃO DO INSTRUMENTO
+                \n
+                Assim que possível responderemos sua solicitação.`;
+      } else {
+        storage[params.from].stage = STAGES.PRIMEIRO_CONTATO;
 
-    if (storage[params.from].stage === STAGES.INICIAL) {
-      await initialStage.exec(params)
-    } else if (storage[params.from].stage === STAGES.FALAR_COM_ATENDENTE) {
-      storage[params.from].finalStage = {
-        startsIn: new Date().getTime(),
-        endsIn: new Date().setSeconds(60), // 1 minute of inactivity
+        msg = `O convênio não foi localizado, orientamos constatar demais secretarias para acompanhamento do instrumento.\n
+        Agradecemos o contato.`;
       }
     }
+
+    await VenomBot.getInstance().sendText({ to: params.from, message: msg });
   },
-}
+};
 
-const options = {
-  1: () => {
-    let message = 'Digite somente o número da opção desejada:\n\n'
+const validarConvenio = (numConvenio) => {
+  // Lógica para buscar convenio no banco de dados
 
-    Object.keys(menu).forEach((value) => {
-      message += `${numbers[value]} - _${menu[value].description}_ \n`
-    })
+  if (numConvenio == "123") {
+    return true;
+  }
 
-    return {
-      message,
-      nextStage: STAGES.CARRINHO,
-    }
-  },
-  2: () => {
-    const message =
-      '\n-----------------------------------\n1️⃣ - ```FAZER PEDIDO``` \n0️⃣ - ```FALAR COM ATENDENTE```\n\n' +
-      neighborhoods +
-      '\n-----------------------------------\n1️⃣ - ```FAZER PEDIDO``` \n0️⃣ - ```FALAR COM ATENDENTE``` '
-
-    return {
-      message,
-      nextStage: null,
-    }
-  },
-  0: () => {
-    return {
-      message:
-        '🔃 Encaminhando você para um atendente. \n⏳ *Aguarde um instante*.\n \n⚠️ A qualquer momento, digite *ENCERRAR* para encerrar o atendimento. ⚠️',
-      nextStage: STAGES.FALAR_COM_ATENDENTE,
-    }
-  },
-}
-
-const numbers = {
-  1: '1️⃣',
-  2: '2️⃣',
-  3: '3️⃣',
-  4: '4️⃣',
-  5: '5️⃣',
-}
+  return false;
+};

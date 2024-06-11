@@ -1,2 +1,3 @@
-2024/06/10-15:53:41.949 8163 Creating DB /home/flaviofilho/Documents/08 - Tests/chatbot/tokens/chatbot-agro/Default/Local Storage/leveldb since it was missing.
-2024/06/10-15:53:41.978 8163 Reusing MANIFEST /home/flaviofilho/Documents/08 - Tests/chatbot/tokens/chatbot-agro/Default/Local Storage/leveldb/MANIFEST-000001
+2024/06/11-11:48:26.553 46d58 Reusing MANIFEST /home/flaviofilho/Documents/08 - Tests/chatbot/tokens/chatbot-agro/Default/Local Storage/leveldb/MANIFEST-000001
+2024/06/11-11:48:26.569 46d58 Recovering log #4
+2024/06/11-11:48:26.569 46d58 Reusing old log /home/flaviofilho/Documents/08 - Tests/chatbot/tokens/chatbot-agro/Default/Local Storage/leveldb/000004.log 
