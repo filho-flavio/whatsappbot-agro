@@ -37,3 +37,21 @@ npm run dev
 ## Funcionamento
 
 Após iniciar o servidor, o bot irá gerar um QR code no console. Escaneie este QR code com o aplicativo WhatsApp para conectar o bot à sua conta.
+
+## Estrutura do Projeto
+
+A estrutura de diretórios do projeto é organizada da seguinte forma:
+
+```
+├── src
+│   ├── stages (stages para lidar com cada fase da conversa)
+│   │   └── 0.js
+│   │   └── 1.js
+│   │   └── 2.js
+│   ├── server.js (servidor para iniciar o chatbot)
+│   ├── stages.js (gerenciar para qual stage a aplicação está)
+│   ├── storage.js (armazenamento de fases do stage e dados       relevantes)
+│   └── venom.js (objeto para operações com a API do Venom-Bot)
+└── tokens
+    └── (sessões de conexão com o Whatsapp)
+```
