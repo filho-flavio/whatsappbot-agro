@@ -28,10 +28,10 @@ export const stageOne = {
         
         msg = `Digite somente o número da opção desejada:
                 1. FORMALIZAÇÃO
-                2. EXECUÇÃO
-                3. PRESTAÇÃO DE CONTAS
-                4. ASSINATURA DO TERMO - CADASTRO EXTERNO
-                5. RESCISÃO DO INSTRUMENTO
+                2. ASSINATURA DO TERMO
+                3. EXECUÇÃO
+                4. PRESTAÇÃO DE CONTAS
+                5. RESCISÃO DE CONVÊNIO
                 \n
               Assim que possível responderemos sua solicitação.`;
       } else {

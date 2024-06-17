@@ -12,8 +12,9 @@ const main = async () => {
     venombot.onMessage(async (message) => {
       if (message.isGroupMsg) return;
 
-      console.log(message);
+      console.log("Aqui está a mensagem: ", message.content);
 
+      // 1
       const currentStage = getStage({ from: message.from });
 
       await stages[currentStage].stage.exec({

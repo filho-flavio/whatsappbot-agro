@@ -24,6 +24,10 @@ export const stageTwo = {
       // salvando a opção escolhida de 1 a 5
       storage[params.from].first_option = message;
 
+      if (message === 1) {
+        storage[params.from].is_first_option_chosen = true;
+      }
+
       const option = options[Number(message)]();
 
       msg = option.message;
@@ -38,11 +42,11 @@ export const stageTwo = {
 const options = {
   1: () => {
     let message = `
-    1. FORMALIZAÇÃO \n
-      1. Análise do Plano de Trabalho.
-      2. Celebração do Convênio.
-      3. Cláusula Suspensiva.
-      4. Voltar ao MENU PRINCIPAL. `;
+    1- FORMALIZAÇÃO \n
+      1. DEFINIÇÃO.
+      2. PROPOSIÇÃO.
+      3. PARTÍCIPES.
+      4. INFORMATIVOS. `; // 1 > 5 > resposta
 
     return {
       message,
@@ -50,13 +54,12 @@ const options = {
   },
   2: () => {
     const message = `
-    2. EXECUÇÃO\n
-        1. Termo Aditivo de Contrapartida.
-        2. Termo Aditivo de Vigência.
-        3. Ajuste de PT.
-        4. Processo de Licitação.
-        5. Voltar ao MENU PRINCIPAL.
-    `;
+    2. ASSINATURA DO TERMO\n
+        1. Quem é o responsavel pela prestação de contas referente ao CONVÊNIO?
+        2. Como e onde o convenente envia a prestação de contas?
+        3. Quais são as responsabilidades específicas dos CONVENENTES durante a execução até a prestação de contas?
+        4. Quais são as responsabilidades específicas dos CONVENENTES durante a execução até a prestação de contas?
+    `; // 1 > resposta
 
     return {
       message,
@@ -64,8 +67,10 @@ const options = {
   },
   3: () => {
     const message = `
-    3. PRESTAÇÃO DE CONTAS\n
-        1. Vazio`;
+    3. EXECUÇÃO\n
+       1. Quais são as responsabilidades específicas dos CONVENENTES durante a execução até a prestação de contas?
+       2. Quais são as responsabilidades específicas dos CONVENENTES durante a execução até a prestação de contas?
+       3. Quais são as responsabilidades específicas que os municípios assumem ao receberem as máquinas e equipamentos?`;
 
     return {
       message,
@@ -73,9 +78,12 @@ const options = {
   },
   4: () => {
     const message = `
-    4. ASSINATURA DO TERMO - CADASTRO EXTERNO\n
-        1. Situação do Cadastro Externo.
-        2. Voltar ao MENU PRINCIPAL.
+    4. PRESTAÇÃO DE CONTAS\n
+        1. Quem é o responsavel pela pretação de contas referente ao CONVÊNIO?
+        2. Como e onde o convenente envia a prestação de contas?
+        3. Quais são as responsabilidades específicas dos CONVENENTES durante a execução até a prestação de contas?
+        4. Quais são as responsabilidades específicas dos CONVENENTES durante a execução até a prestação de contas?
+        5-
     `;
 
     return {
@@ -84,9 +92,8 @@ const options = {
   },
   5: () => {
     const message = `
-    5. RESCISÃO DO INSTRUMENTO\n
-       1. Entrar em contato com a Prestação de Contas
-       2. Voltar ao MENU PRINCIPAL
+    5. RESCISÃO DE CONVÊNIO\n
+       1. Condições suspensivas podem gerar a rescisão do convênio em caso de descumprimento?
     `;
 
     return {
