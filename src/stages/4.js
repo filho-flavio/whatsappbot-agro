@@ -16,7 +16,7 @@ export const stageFour = {
     console.log("Aqui está se a mensagem é valida: ", isMsgValid);
 
     let msg = "Digite uma opção de 1 a 4.";
-    
+
     // se mensagem for valida, ou seja, entre 1 e 4
     if (isMsgValid) {
       let option;
@@ -29,6 +29,18 @@ export const stageFour = {
         case "1":
           const optionOne = optionsOfDefinicao[Number(message)]();
           option = optionOne;
+          break;
+        case "1":
+          const optionTwo = optionsOfProposicao[Number(message)]();
+          option = optionTwo;
+          break;
+        case "1":
+          const optionThree = optionsOfParticipes[Number(message)]();
+          option = optionThree;
+          break;
+        case "1":
+          const optionFour = optionsOfPInformativos[Number(message)]();
+          option = optionFour;
           break;
       }
 
@@ -222,4 +234,3 @@ const optionsOfPInformativos = {
     };
   },
 };
-
